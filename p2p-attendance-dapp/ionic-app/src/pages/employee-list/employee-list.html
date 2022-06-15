@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Employees</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addEmployee()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="searchEmployee($event)" placeholder="Search Employee By Name" type="text"></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding *ngFor="let employee of currentEmployees,let i = index">
+      <button ion-item (click)="openEmployee(employee)">
+        <ion-avatar item-start>
+          <img [src]="employee[4]"/>
+        </ion-avatar>
+        <h2>{{employee[2]}}</h2>
+        <p>{{employee[3]}}</p>
+        <!--<ion-note item-end >28/07/2018 </ion-note>-->
+      </button>
+      <ion-item-options class="cssForRoundSLidingItems" side="right">
+        <button ion-button color="dark" icon-start (click)="editEmployee(i)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="dark"  icon-start (click)="deleteEmployee(i)">
+          <ion-icon  name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
